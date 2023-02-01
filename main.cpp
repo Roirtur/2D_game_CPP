@@ -77,12 +77,12 @@ int main(int ac, char **av) {
         Here is were we can add things to appear
         */
         for (Projectile* projectile: all_projectile_array) {
-            player->collision_check(projectile->get_hitbox(), &Player::player_die);
+            player->collision_check(projectile->get_hitbox());
             projectile->refresh_projectile();
         }
         //printf("Player %d %d %d %d\n", player->get_hitbox().x, player->get_hitbox().y, player->get_hitbox().w, player->get_hitbox().h);
         //printf("Projectile %d %d\n", projectile1->get_hitbox().x, projectile1->get_hitbox().y);
-        player->refresh_player();
+        player->show_object();
         screen->draw_screen();
 
         SDL_Delay(16);

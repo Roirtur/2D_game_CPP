@@ -10,7 +10,7 @@ class Sprite {
         SDL_Rect spritebox;
         SDL_Surface *surface;
         SDL_Texture *texture;
-        SDL_Rect on_sprite_rect;
+        SDL_Rect img_rect;
         bool is_flip;
 
 

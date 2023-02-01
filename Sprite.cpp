@@ -3,7 +3,7 @@
 
 Sprite::Sprite(int x, int y, int width, int height, int img_width, int img_height, bool flip, char* image_path, SDL_Renderer* renderer) {
     SDL_Rect sprite1 = {x,y,img_width,img_height};
-    this->on_sprite_rect = sprite1;
+    this->img_rect = sprite1;
 
     this->renderer = renderer;
 
@@ -43,8 +43,8 @@ void Sprite::change_sprite_sheet(char* image_path) {
     }
 };
 void Sprite::move_sprite_texture(int x, int y) {
-    this->on_sprite_rect.x = x;
-    this->on_sprite_rect.y = y;
+    this->img_rect.x = x;
+    this->img_rect.y = y;
 };
 void Sprite::flip() {
     this->is_flip = !(this->is_flip);

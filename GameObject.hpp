@@ -39,6 +39,7 @@ class GameObject {
         void show_object();
         void move_to(Direction direction);
         void show_hitbox();
+        void set_speed(double new_speed);
 };
 
 #endif

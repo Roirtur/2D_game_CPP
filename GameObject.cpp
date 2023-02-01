@@ -42,7 +42,7 @@ void GameObject::resize(int width, int height) {
 };
 void GameObject::show_object() {
     //show_hitbox();
-    SDL_RenderCopyEx(renderer, sprite->texture, &(sprite->on_sprite_rect), &(sprite->spritebox), 0, NULL, this->sprite->is_flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+    SDL_RenderCopyEx(renderer, sprite->texture, &(sprite->img_rect), &(sprite->spritebox), 0, NULL, this->sprite->is_flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 };
 
 void GameObject::move_to(Direction direction) {
@@ -79,4 +79,9 @@ void GameObject::show_hitbox() {
 bool GameObject::collision_check(SDL_Rect othex_hitbox) {
     SDL_Rect result;
     return SDL_IntersectRect(&hitbox, &othex_hitbox, &result) == SDL_TRUE;
+};
+
+
+void GameObject::set_speed(double new_speed) {
+    this->speed = new_speed;
 };
