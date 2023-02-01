@@ -79,9 +79,9 @@ int main(int ac, char **av) {
         */
         for (Projectile* projectile: all_projectile_array) {
             if (player->collision_check(projectile->get_hitbox())) {
-                //printf("true\n");
+                printf("true\n");
             } else {
-                //printf("false\n");
+                printf("false\n");
             }
             projectile->show_object();
         }

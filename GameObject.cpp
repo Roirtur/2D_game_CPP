@@ -7,8 +7,8 @@ GameObject::GameObject(int x, int y, int width, int height, int img_width, int i
     this->renderer = renderer;
     this->hitbox = SDL_Rect{0,0,0,0};
     this->current_direction = direction;
-    (sprite->spritebox.w == 0) ? this->size_multiplicator_w = 1: this->size_multiplicator_w = width/sprite->spritebox.w;
-    (sprite->spritebox.h == 0) ? this->size_multiplicator_h = 1: this->size_multiplicator_h = height/sprite->spritebox.h;
+    (img_width == 0) ? this->size_multiplicator_w = 1: this->size_multiplicator_w = width/img_width;
+    (img_height == 0) ? this->size_multiplicator_h = 1: this->size_multiplicator_h = height/img_height;
     (speed == 0) ? this->speed = 1 : this->speed = speed;
     move_to(x, y);
     resize(width, height);
@@ -35,8 +35,8 @@ void GameObject::move_to(int x, int y) {
 void GameObject::resize(int width, int height) {
     sprite->spritebox.w = width;
     sprite->spritebox.h = height;
-    hitbox.w = (sprite->spritebox.w - EMPTY_PIX_X) * size_multiplicator_w;
-    hitbox.h = (sprite->spritebox.h - EMPTY_PIX_Y) * size_multiplicator_h;
+    hitbox.w = (sprite->img_rect.w - EMPTY_PIX_X) * size_multiplicator_w;
+    hitbox.h = (sprite->img_rect.h - EMPTY_PIX_Y) * size_multiplicator_h;
 };
 void GameObject::show_object() {
     show_hitbox();
