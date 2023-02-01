@@ -5,6 +5,7 @@
 #include <SDL2/SDL_image.h>
 #include <thread>
 #include "Enum.hpp"
+#include "Enum.hpp"
 
 #define PROJECTILE_STEP 3
 

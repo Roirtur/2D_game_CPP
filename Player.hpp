@@ -5,6 +5,7 @@
 #include <SDL2/SDL_image.h>
 #include <thread>
 #include "Enum.hpp"
+#include "Sprite.hpp"
 
 #define PLAYER_STEP 3
 #define WALK_SPEED 1
