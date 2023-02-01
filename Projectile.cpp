@@ -43,7 +43,7 @@ void Projectile::refresh_projectile() {
 
 SDL_Rect Projectile::get_hitbox() {
     return this->hitbox;
-}
+};
 
 void Projectile::change_sprite_sheet(char* image_path) {
     int img_flags = IMG_INIT_PNG;
@@ -60,11 +60,11 @@ void Projectile::change_sprite_sheet(char* image_path) {
     if (!this->texture) {
         printf("Error: %s\n", SDL_GetError());;
     }
-}
+};
 
 int Projectile::get_frame_number() {
     return this->frame_number;
-}
+};
 
 
 void Projectile::move_to(Direction direction) {
@@ -87,11 +87,11 @@ void Projectile::move_to(Direction direction) {
     };
     this->hitbox.x = new_position_x;
     this->hitbox.y = new_position_y;
-}
+};
 
 double Projectile::get_speed() {
     return this->speed;
-}
+};
 void Projectile::set_speed(double speed) {
     this->speed = speed;
-}
+};

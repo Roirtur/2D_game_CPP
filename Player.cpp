@@ -47,9 +47,6 @@ void Player::resize(int width, int height) {
     this->spritebox.h = height;
     this->hitbox.w = (sprite.w - EMPTY_PIX_X) * size_multiplicator_w;
     this->hitbox.h = (sprite.h - EMPTY_PIX_Y) * size_multiplicator_h;
-    printf("resized\n");
-    printf("sprite %d %d\n",hitbox.w,hitbox.h);
-    printf("hitbox %d %d\n",hitbox.w,hitbox.h);
 };
 
 void Player::refresh_player() {
@@ -60,14 +57,14 @@ void Player::refresh_player() {
 
 SDL_Rect Player::get_spritebox() {
     return this->spritebox;
-}
+};
 
 void Player::stand_animation() {
     this->frame_number = 0;
     this->timer_retain = 0;
     this->sprite.x = 0;
     change_sprite_sheet((char*)"../Link_Standing.png");
-}
+};
 
 void Player::spin_animation() {
     int ticks_ms = SDL_GetTicks();
@@ -81,7 +78,7 @@ void Player::spin_animation() {
         this->frame_number%=4;
         this->sprite.x = (frame_number * 32)%(4*32);
     }
-}
+};
 
 void Player::walk_animation() {
     int ticks_ms = SDL_GetTicks();
@@ -111,7 +108,7 @@ void Player::walk_animation() {
             break;
         }
     }
-}
+};
 
 void Player::change_sprite_sheet(char* image_path) {
     int img_flags = IMG_INIT_PNG;
@@ -128,15 +125,15 @@ void Player::change_sprite_sheet(char* image_path) {
     if (!this->texture) {
         printf("Error: %s\n", SDL_GetError());;
     }
-}
+};
 
 int Player::get_frame_number() {
     return this->frame_number;
-}
+};
 
 void Player::set_animation(void (Player::*animation_function)()) {
     this->current_animation = animation_function;
-}
+};
 
 
 void Player::move_to(Direction direction) {
@@ -162,24 +159,24 @@ void Player::move_to(Direction direction) {
 
     this->hitbox.x = spritebox.x + (EMPTY_PIX_X/2) * size_multiplicator_w;
     this->hitbox.y = spritebox.y + (EMPTY_PIX_Y/2) * size_multiplicator_h;
-}
+};
 
 double Player::get_speed() {
     return this->speed;
-}
+};
 void Player::set_speed(double speed) {
     this->speed = speed;
-}
+};
 
 void Player::player_die() {
     this->set_animation(&Player::spin_animation);
-}
+};
 
 void Player::show_hitbox() {
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 120);
     SDL_RenderFillRect(renderer, &(hitbox));
-}
+};
 
 SDL_Rect Player::get_hitbox() {
     return hitbox;
-}
+};
