@@ -5,18 +5,6 @@
 
 class Map : public GameObject
 {
-    protected:
-        SDL_Rect spritebox;
-        SDL_Surface *surface;
-        SDL_Texture *texture;
-        SDL_Rect sprite;
-        SDL_Renderer* renderer;
-        bool is_flip;
-        int size_multiplicator_w;
-        int size_multiplicator_h;
-
-
-
     public:
         Map(int x, int y, int width, int height, int img_width, int img_height, char* image_path, SDL_Renderer* renderer);
         ~Map();

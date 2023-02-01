@@ -72,7 +72,7 @@ int main(int ac, char **av) {
         screen->resize();
 
         screen->clear_screen();
-        map->refresh_map();
+        map->show_object();
         /*
         Here is were we can add things to appear
         */
