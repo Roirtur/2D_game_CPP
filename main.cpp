@@ -7,6 +7,7 @@
 #include "Player.hpp"
 #include "Projectile.hpp"
 #include "Map.hpp"
+#include "Sprite.hpp"
 
 bool init_sdl(void) {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
