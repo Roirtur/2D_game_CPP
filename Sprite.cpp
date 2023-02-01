@@ -2,14 +2,9 @@
 
 
 Sprite::Sprite(int x, int y, int width, int height, int img_width, int img_height, bool flip, char* image_path, SDL_Renderer* renderer) {
-    SDL_Rect sprite1 = {x,y,img_width,img_height};
-    this->img_rect = sprite1;
-
+    this->img_rect = {x,y,img_width,img_height};
+    this->spritebox = {x,y,img_width,img_height};
     this->renderer = renderer;
-
-    SDL_Rect sprite_rect;
-    this->spritebox = sprite_rect;
-    this->resize(width, height);
 
     this->is_flip = false;
     change_sprite_sheet(image_path);
@@ -22,10 +17,7 @@ Sprite::~Sprite() {
 SDL_Rect Sprite::get_spritebox() {
     return this->spritebox;
 };
-void Sprite::resize(int width, int height) {
-    this->spritebox.w = width;
-    this->spritebox.h = height;
-};
+
 void Sprite::change_sprite_sheet(char* image_path) {
     int img_flags = IMG_INIT_PNG;
     if (!(IMG_Init(img_flags) & img_flags)) {

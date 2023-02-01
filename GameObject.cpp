@@ -2,16 +2,16 @@
 
 
 GameObject::GameObject(int x, int y, int width, int height, int img_width, int img_height, int speed, Direction direction, char* image_path, SDL_Renderer* renderer) {
-    Sprite* sprite {new Sprite{0, 0, 0, 0, img_width, img_height, false, image_path, renderer}};
+    Sprite* sprite {new Sprite{x, y, width, height, img_width, img_height, false, image_path, renderer}};
     this->sprite = sprite;
-    move_to(x, y);
-    resize(width, height);
     this->renderer = renderer;
     this->hitbox = SDL_Rect{0,0,0,0};
-    this->size_multiplicator_w = width/sprite->spritebox.w;
-    this->size_multiplicator_h = height/sprite->spritebox.h;
     this->current_direction = direction;
-    this->speed = speed;
+    (sprite->spritebox.w == 0) ? this->size_multiplicator_w = 1: this->size_multiplicator_w = width/sprite->spritebox.w;
+    (sprite->spritebox.h == 0) ? this->size_multiplicator_h = 1: this->size_multiplicator_h = height/sprite->spritebox.h;
+    (speed == 0) ? this->speed = 1 : this->speed = speed;
+    move_to(x, y);
+    resize(width, height);
 };
 
 GameObject::~GameObject() {
@@ -26,13 +26,11 @@ Sprite GameObject::get_sprite() {
     return *sprite;
 };
 
-
-
 void GameObject::move_to(int x, int y) {
     sprite->spritebox.x = x;
     sprite->spritebox.y = y;
-    hitbox.x = sprite->spritebox.x + (EMPTY_PIX_X/2) * size_multiplicator_w;
-    hitbox.y = sprite->spritebox.y + (EMPTY_PIX_Y/2) * size_multiplicator_h;
+    hitbox.x = x + (EMPTY_PIX_X/2) * size_multiplicator_w;
+    hitbox.y = y + (EMPTY_PIX_Y/2) * size_multiplicator_h;
 };
 void GameObject::resize(int width, int height) {
     sprite->spritebox.w = width;
@@ -41,8 +39,8 @@ void GameObject::resize(int width, int height) {
     hitbox.h = (sprite->spritebox.h - EMPTY_PIX_Y) * size_multiplicator_h;
 };
 void GameObject::show_object() {
-    //show_hitbox();
-    SDL_RenderCopyEx(renderer, sprite->texture, &(sprite->img_rect), &(sprite->spritebox), 0, NULL, this->sprite->is_flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+    show_hitbox();
+    SDL_RenderCopyEx(renderer, sprite->texture, &(sprite->img_rect), &(sprite->spritebox), 0, NULL, sprite->is_flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 };
 
 void GameObject::move_to(Direction direction) {
@@ -76,9 +74,10 @@ void GameObject::show_hitbox() {
     SDL_RenderFillRect(renderer, &(hitbox));
 };
 
-bool GameObject::collision_check(SDL_Rect othex_hitbox) {
+bool GameObject::collision_check(SDL_Rect other_hitbox) {
     SDL_Rect result;
-    return SDL_IntersectRect(&hitbox, &othex_hitbox, &result) == SDL_TRUE;
+    //printf("hitbox 1: %d %d %d %d\n hitbox 2: %d %d %d %d\n", hitbox.x, hitbox.y, hitbox.w, hitbox.h, other_hitbox.x, other_hitbox.y, other_hitbox.w, other_hitbox.h);
+    return SDL_IntersectRect(&hitbox, &other_hitbox, &result) == SDL_TRUE;
 };
 
 

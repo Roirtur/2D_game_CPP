@@ -18,7 +18,6 @@ class Sprite {
         ~Sprite();
 
         SDL_Rect get_spritebox();
-        void resize(int width, int height);
         void change_sprite_sheet(char* image_path);
         void move_sprite_texture(int x, int y);
         void flip();
