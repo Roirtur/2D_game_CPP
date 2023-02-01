@@ -26,7 +26,7 @@ class GameObject {
         
 
     public:
-        GameObject(int x, int y, int width, int height, int img_width, int img_height, int speed, Direction direction, char* image_path, SDL_Renderer* renderer);
+        GameObject(int x, int y, int width, int height, int img_width, int img_height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer);
         ~GameObject();
 
         SDL_Rect get_hitbox();

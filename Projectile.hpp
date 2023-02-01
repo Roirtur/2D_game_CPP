@@ -12,7 +12,7 @@ protected:
     int timer_retain;
 
 public:
-    Projectile(int x, int y, int width, int height, int img_width, int img_height, int speed, Direction direction, char* image_path, SDL_Renderer* renderer);
+    Projectile(int x, int y, int width, int height, int img_width, int img_height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer);
     ~Projectile();
 
     int get_frame_number();

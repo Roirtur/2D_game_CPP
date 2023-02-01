@@ -16,7 +16,7 @@ protected:
     void (Player::*current_animation)();
 
 public:
-    Player(int x, int y, int width, int height, int img_width, int img_height, int speed, Direction direction, char* image_path, SDL_Renderer* renderer);
+    Player(int x, int y, int width, int height, int img_width, int img_height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer);
     ~Player();
 
     void spin_animation();

@@ -2,7 +2,7 @@
 
 
 Sprite::Sprite(int x, int y, int width, int height, int img_width, int img_height, bool flip, char* image_path, SDL_Renderer* renderer) {
-    this->img_rect = {x,y,img_width,img_height};
+    this->img_rect = {0,0,img_width,img_height};
     this->spritebox = {x,y,img_width,img_height};
     this->renderer = renderer;
 

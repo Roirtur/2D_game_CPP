@@ -1,7 +1,7 @@
 #include "GameObject.hpp"
 
 
-GameObject::GameObject(int x, int y, int width, int height, int img_width, int img_height, int speed, Direction direction, char* image_path, SDL_Renderer* renderer) {
+GameObject::GameObject(int x, int y, int width, int height, int img_width, int img_height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer) {
     Sprite* sprite {new Sprite{x, y, width, height, img_width, img_height, false, image_path, renderer}};
     this->sprite = sprite;
     this->renderer = renderer;
