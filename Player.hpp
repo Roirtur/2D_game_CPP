@@ -7,8 +7,6 @@
 #define WALK_SPEED 1
 #define RUN_SPEED 2
 #define ANIMATION_SPEED 70
-#define EMPTY_PIX_X 10
-#define EMPTY_PIX_Y 5
 
 class Player : public GameObject
 {
@@ -31,7 +29,7 @@ protected:
 
 
 public:
-    Player(int x, int y, int width, int height, char* image_path, SDL_Renderer* renderer);
+    Player(int x, int y, int width, int height, int img_width, int img_height, int speed, Direction direction, char* image_path, SDL_Renderer* renderer);
     ~Player();
 
     void move_to(int x, int y);

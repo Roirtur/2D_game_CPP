@@ -46,9 +46,6 @@ void Sprite::move_sprite_texture(int x, int y) {
     this->on_sprite_rect.x = x;
     this->on_sprite_rect.y = y;
 };
-void Sprite::refresh_sprite() {
-    SDL_RenderCopyEx(this->renderer, this->texture, &(this->on_sprite_rect), &(this->spritebox), 0, NULL, this->is_flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
-};
 void Sprite::flip() {
     this->is_flip = !(this->is_flip);
 };
