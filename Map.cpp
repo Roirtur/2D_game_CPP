@@ -4,7 +4,7 @@
 Map::Map(int width, int height, char* image_path, SDL_Renderer* renderer) {
     this->renderer = renderer;
 
-    SDL_Rect sprite1 = {0,0,24,24};
+    SDL_Rect sprite1 = {0,0,width/3,height/3};
     this->sprite = sprite1;
     this->size_multiplicator_w = width/sprite.w;
     this->size_multiplicator_h = height/sprite.h;
@@ -15,6 +15,7 @@ Map::Map(int width, int height, char* image_path, SDL_Renderer* renderer) {
 
     this->is_flip = false;
     change_sprite_sheet(image_path);
+    move_screen(0, 0);
 };
 
 Map::~Map() {

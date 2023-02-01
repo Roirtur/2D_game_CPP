@@ -6,6 +6,7 @@
 #include "Window.hpp"
 #include "Player.hpp"
 #include "Projectile.hpp"
+#include "Map.hpp"
 
 bool init_sdl(void) {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -19,6 +20,7 @@ int main(int ac, char **av) {
     assert(init_sdl());
 
     Window* screen { new Window{ "Window", 1000, 700 } };
+    Map* map { new Map{1000, 700, (char*)"../map.png", screen->get_render()} };
     Player* player { new Player{100, 280, 72, 72, (char *)"../Link_Standing.png", screen->get_render()}};
 
     std::vector<Projectile*> all_projectile_array;
@@ -69,6 +71,7 @@ int main(int ac, char **av) {
         screen->resize();
 
         screen->clear_screen();
+        map->refresh_map();
         /*
         Here is were we can add things to appear
         */
