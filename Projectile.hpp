@@ -1,15 +1,11 @@
 #ifndef PROJECTILE_HPP
 #define PROJECTILE_HPP
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <thread>
-#include "Enum.hpp"
-#include "Enum.hpp"
+#include "GameObject.hpp"
 
 #define PROJECTILE_STEP 3
 
-class Projectile
+class Projectile : public GameObject
 {
 protected:
     SDL_Rect hitbox;

@@ -1,11 +1,7 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <thread>
-#include "Enum.hpp"
-#include "Sprite.hpp"
+#include "GameObject.hpp"
 
 #define PLAYER_STEP 3
 #define WALK_SPEED 1
@@ -14,7 +10,7 @@
 #define EMPTY_PIX_X 10
 #define EMPTY_PIX_Y 5
 
-class Player
+class Player : public GameObject
 {
 protected:
     SDL_Rect spritebox;
