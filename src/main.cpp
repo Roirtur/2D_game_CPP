@@ -16,13 +16,21 @@ bool init_sdl(void) {
 int main(int ac, char **av) {
     assert(init_sdl());
 
+//---------------------------------------------------------------------------------------------------
+
     Window* screen { new Window{ "Window", 1000, 700 } };
+
+//---------------------------------------------------------------------------------------------------
 
     Map* map { new Map{0, 0, 1000, 700, (char*)"../ressources/spritesheets/map.png", screen->get_render()} };
     map->change_img_size(600,300);
 
+//---------------------------------------------------------------------------------------------------
+
     Player* player { new Player{100, 280, 72, 72, 2, DOWN, (char *)"../ressources/spritesheets/Link_Standing.png", screen->get_render()}};
     player->change_img_size(24,24);
+
+//---------------------------------------------------------------------------------------------------
 
     std::vector<Projectile*> all_projectile_array;
 
@@ -33,7 +41,12 @@ int main(int ac, char **av) {
     Projectile* projectile2 { new Projectile{20, 20, 24, 24, 1, DOWN, (char *)"../ressources/spritesheets/Link_Standing.png", screen->get_render()} };
     projectile2->change_img_size(24,24);
     all_projectile_array.push_back(projectile2);
-    
+
+//---------------------------------------------------------------------------------------------------
+
+    Obstacle* rock {new Obstacle(0, 0, 72, 72, (char *)"../ressources/spritesheets/Rock.png", screen->get_render())};
+
+//---------------------------------------------------------------------------------------------------
     SDL_Event event;
 
     while (screen->get_isOpen()) {
@@ -91,6 +104,7 @@ int main(int ac, char **av) {
         //printf("Player %d %d %d %d\n", player->get_hitbox().x, player->get_hitbox().y, player->get_hitbox().w, player->get_hitbox().h);
         //printf("Projectile %d %d\n", projectile1->get_hitbox().x, projectile1->get_hitbox().y);
         player->show_object();
+        rock->show_object();
         screen->draw_screen();
 
         SDL_Delay(16);
