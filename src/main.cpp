@@ -3,11 +3,7 @@
 #include <cstdlib>
 #include <vector>
 
-#include "headers/Window.hpp"
-#include "headers/Player.hpp"
-#include "headers/Projectile.hpp"
-#include "headers/Map.hpp"
-#include "headers/Sprite.hpp"
+#include "headers/AllClass.hpp"
 
 bool init_sdl(void) {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
