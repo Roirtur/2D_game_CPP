@@ -1,14 +1,14 @@
 #include "../headers/GameObject.hpp"
 
 
-GameObject::GameObject(int x, int y, int width, int height, int img_width, int img_height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer) {
-    Sprite* sprite {new Sprite{x, y, width, height, img_width, img_height, false, image_path, renderer}};
+GameObject::GameObject(int x, int y, int width, int height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer) {
+    Sprite* sprite {new Sprite{x, y, width, height, false, image_path, renderer}};
     this->sprite = sprite;
     this->renderer = renderer;
     this->hitbox = SDL_Rect{0,0,0,0};
     this->current_direction = direction;
-    (img_width == 0) ? this->size_multiplicator_w = 1: this->size_multiplicator_w = width/img_width;
-    (img_height == 0) ? this->size_multiplicator_h = 1: this->size_multiplicator_h = height/img_height;
+    (this->sprite->surface->w == 0) ? this->size_multiplicator_w = 1: this->size_multiplicator_w = width/this->sprite->surface->w;
+    (this->sprite->surface->h == 0) ? this->size_multiplicator_h = 1: this->size_multiplicator_h = height/this->sprite->surface->h;
     (speed == 0) ? this->speed = 1 : this->speed = speed;
     move_to(x, y);
     resize(width, height);
@@ -84,3 +84,11 @@ bool GameObject::collision_check(SDL_Rect other_hitbox) {
 void GameObject::set_speed(double new_speed) {
     this->speed = new_speed;
 };
+
+
+void GameObject::change_img_size(int width, int height) {
+    (width == 0) ? this->size_multiplicator_w = 1: this->size_multiplicator_w = width;
+    (height == 0) ? this->size_multiplicator_h = 1: this->size_multiplicator_h = height;
+    this->sprite->img_rect.w = width;
+    this->sprite->img_rect.h = height;
+}

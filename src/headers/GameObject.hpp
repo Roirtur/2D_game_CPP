@@ -26,7 +26,7 @@ class GameObject {
         
 
     public:
-        GameObject(int x, int y, int width, int height, int img_width, int img_height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer);
+        GameObject(int x, int y, int width, int height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer);
         ~GameObject();
 
         SDL_Rect get_hitbox();
@@ -40,6 +40,7 @@ class GameObject {
         void move_to(Direction direction);
         void show_hitbox();
         void set_speed(double new_speed);
+        void change_img_size(int width, int height);
 };
 
 #endif

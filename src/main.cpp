@@ -17,15 +17,21 @@ int main(int ac, char **av) {
     assert(init_sdl());
 
     Window* screen { new Window{ "Window", 1000, 700 } };
-    Map* map { new Map{0, 0, 1000, 700, 330, 250, (char*)"../ressources/spritesheets/map.png", screen->get_render()} };
-    Player* player { new Player{100, 280, 72, 72, 24, 24, 2, DOWN, (char *)"../ressources/spritesheets/Link_Standing.png", screen->get_render()}};
+
+    Map* map { new Map{0, 0, 1000, 700, (char*)"../ressources/spritesheets/map.png", screen->get_render()} };
+    map->change_img_size(600,300);
+
+    Player* player { new Player{100, 280, 72, 72, 2, DOWN, (char *)"../ressources/spritesheets/Link_Standing.png", screen->get_render()}};
+    player->change_img_size(24,24);
 
     std::vector<Projectile*> all_projectile_array;
 
-    Projectile* projectile1 { new Projectile{500, 500, 24, 24, 24, 24, 1, DOWN, (char *)"../ressources/spritesheets/Link_Standing.png", screen->get_render()} };
+    Projectile* projectile1 { new Projectile{500, 500, 24, 24, 1, DOWN, (char *)"../ressources/spritesheets/Link_Standing.png", screen->get_render()} };
+    projectile1->change_img_size(24,24);
     all_projectile_array.push_back(projectile1);
     
-    Projectile* projectile2 { new Projectile{20, 800, 24, 24, 24, 24, 1, DOWN, (char *)"../ressources/spritesheets/Link_Standing.png", screen->get_render()} };
+    Projectile* projectile2 { new Projectile{20, 20, 24, 24, 1, DOWN, (char *)"../ressources/spritesheets/Link_Standing.png", screen->get_render()} };
+    projectile2->change_img_size(24,24);
     all_projectile_array.push_back(projectile2);
     
     SDL_Event event;

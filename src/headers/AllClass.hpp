@@ -6,5 +6,6 @@
 #include "Player.hpp"
 #include "Projectile.hpp"
 #include "Window.hpp"
+#include "Obstacle.hpp"
 
 #endif

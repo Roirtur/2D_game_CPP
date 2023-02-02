@@ -14,7 +14,7 @@ class Sprite {
         bool is_flip;
 
 
-        Sprite(int x, int y, int width, int height, int img_width, int img_height, bool flip, char* image_path, SDL_Renderer* renderer);
+        Sprite(int x, int y, int width, int height, bool flip, char* image_path, SDL_Renderer* renderer);
         ~Sprite();
 
         SDL_Rect get_spritebox();

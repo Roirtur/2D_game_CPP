@@ -1,13 +1,13 @@
 #include "../headers/Sprite.hpp"
 
 
-Sprite::Sprite(int x, int y, int width, int height, int img_width, int img_height, bool flip, char* image_path, SDL_Renderer* renderer) {
-    this->img_rect = {0,0,img_width,img_height};
-    this->spritebox = {x,y,img_width,img_height};
+Sprite::Sprite(int x, int y, int width, int height, bool flip, char* image_path, SDL_Renderer* renderer) {
     this->renderer = renderer;
+    change_sprite_sheet(image_path);
+    this->img_rect = {0,0,this->surface->w,this->surface->h};
+    this->spritebox = {x,y,this->surface->w,this->surface->h};
 
     this->is_flip = false;
-    change_sprite_sheet(image_path);
 };
 Sprite::~Sprite() {
     SDL_DestroyTexture(this->texture);
