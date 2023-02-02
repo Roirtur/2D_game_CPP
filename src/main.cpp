@@ -3,11 +3,11 @@
 #include <cstdlib>
 #include <vector>
 
-#include "Window.hpp"
-#include "Player.hpp"
-#include "Projectile.hpp"
-#include "Map.hpp"
-#include "Sprite.hpp"
+#include "headers/Window.hpp"
+#include "headers/Player.hpp"
+#include "headers/Projectile.hpp"
+#include "headers/Map.hpp"
+#include "headers/Sprite.hpp"
 
 bool init_sdl(void) {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -21,16 +21,15 @@ int main(int ac, char **av) {
     assert(init_sdl());
 
     Window* screen { new Window{ "Window", 1000, 700 } };
-    Map* map { new Map{0, 0, 1000, 700, 330, 250, (char*)"../map.png", screen->get_render()} };
-    Player* player { new Player{100, 280, 72, 72, 24, 24, 2, DOWN, (char *)"../Link_Standing.png", screen->get_render()}};
-    printf("%d %d\n",player->get_hitbox().w,player->get_hitbox().h);
+    Map* map { new Map{0, 0, 1000, 700, 330, 250, (char*)"../ressources/spritesheets/map.png", screen->get_render()} };
+    Player* player { new Player{100, 280, 72, 72, 24, 24, 2, DOWN, (char *)"../ressources/spritesheets/Link_Standing.png", screen->get_render()}};
 
     std::vector<Projectile*> all_projectile_array;
 
-    Projectile* projectile1 { new Projectile{500, 500, 24, 24, 24, 24, 1, DOWN, (char *)"../Link_Standing.png", screen->get_render()} };
+    Projectile* projectile1 { new Projectile{500, 500, 24, 24, 24, 24, 1, DOWN, (char *)"../ressources/spritesheets/Link_Standing.png", screen->get_render()} };
     all_projectile_array.push_back(projectile1);
     
-    Projectile* projectile2 { new Projectile{20, 800, 24, 24, 24, 24, 1, DOWN, (char *)"../Link_Standing.png", screen->get_render()} };
+    Projectile* projectile2 { new Projectile{20, 800, 24, 24, 24, 24, 1, DOWN, (char *)"../ressources/spritesheets/Link_Standing.png", screen->get_render()} };
     all_projectile_array.push_back(projectile2);
     
     SDL_Event event;
@@ -78,11 +77,13 @@ int main(int ac, char **av) {
         Here is were we can add things to appear
         */
         for (Projectile* projectile: all_projectile_array) {
+            /*
             if (player->collision_check(projectile->get_hitbox())) {
                 printf("true\n");
             } else {
                 printf("false\n");
             }
+            */
             projectile->show_object();
         }
         //printf("Player %d %d %d %d\n", player->get_hitbox().x, player->get_hitbox().y, player->get_hitbox().w, player->get_hitbox().h);

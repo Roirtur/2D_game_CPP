@@ -1,4 +1,4 @@
-#include "GameObject.hpp"
+#include "../headers/GameObject.hpp"
 
 
 GameObject::GameObject(int x, int y, int width, int height, int img_width, int img_height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer) {
