@@ -3,7 +3,8 @@
 #include <cstdlib>
 #include <vector>
 
-#include "headers/AllClass.hpp"
+#include "AllClass.hpp"
+#include "AllControllers.hpp"
 
 bool init_sdl(void) {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -47,6 +48,10 @@ int main(int ac, char **av) {
     Obstacle* rock {new Obstacle(0, 0, 72, 72, (char *)"../ressources/spritesheets/Rock.png", screen->get_render())};
 
 //---------------------------------------------------------------------------------------------------
+
+    ControllerCollision* controllerCollision { new ControllerCollision() };
+
+//---------------------------------------------------------------------------------------------------
     SDL_Event event;
 
     while (screen->get_isOpen()) {
@@ -88,9 +93,6 @@ int main(int ac, char **av) {
 
         screen->clear_screen();
         map->show_object();
-        /*
-        Here is were we can add things to appear
-        */
         for (Projectile* projectile: all_projectile_array) {
             /*
             if (player->collision_check(projectile->get_hitbox())) {

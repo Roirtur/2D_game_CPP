@@ -1,4 +1,4 @@
-#include "../headers/Projectile.hpp"
+#include "Projectile.hpp"
 
 
 Projectile::Projectile(int x, int y, int width, int height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer) 

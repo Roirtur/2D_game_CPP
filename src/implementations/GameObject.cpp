@@ -1,4 +1,4 @@
-#include "../headers/GameObject.hpp"
+#include "GameObject.hpp"
 
 
 GameObject::GameObject(int x, int y, int width, int height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer) {
@@ -39,7 +39,7 @@ void GameObject::resize(int width, int height) {
     hitbox.h = (sprite->img_rect.h - EMPTY_PIX_Y) * size_multiplicator_h;
 };
 void GameObject::show_object() {
-    show_hitbox();
+    //show_hitbox();
     SDL_RenderCopyEx(renderer, sprite->texture, &(sprite->img_rect), &(sprite->spritebox), 0, NULL, sprite->is_flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 };
 

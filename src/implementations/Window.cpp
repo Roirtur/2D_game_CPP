@@ -1,5 +1,5 @@
 #include <cassert>
-#include "../headers/Window.hpp"
+#include "Window.hpp"
 
 Window::Window() {
     this->width     = 900;

@@ -17,8 +17,12 @@ message( STATUS "SDL2_ttf_INCLUDE_DIRS [${SDL2_ttf_INCLUDE_DIRS}]" )
 find_path(SDL2_mixer_INCLUDE_DIRS SDL2/SDL_mixer.h REQUIRED )
 message( STATUS "SDL2_mixer_INCLUDE_DIRS [${SDL2_mixer_INCLUDE_DIRS}]" )
 
-file(GLOB SOURCES "src/implementations/*.cpp")
+include_directories(src/headers)
+include_directories(src/controllers/headers)
 
-add_executable(game src/main.cpp ${SOURCES})
+file(GLOB SOURCES_CLASS "src/implementations/*.cpp")
+file(GLOB SOURCES_CONTROLLERS "src/controllers/implementations/*.cpp")
+
+add_executable(game src/main.cpp ${SOURCES_CLASS} ${SOURCES_CONTROLLERS})
 target_include_directories(game PRIVATE ${SDL2_INCLUDE_DIRS} ${SDL2_image_INCLUDE_DIRS} ${SDL2_ttf_INCLUDE_DIRS} ${SDL2_mixer_INCLUDE_DIRS})
 target_link_libraries(game ${TIFF_LIBRARIES} ${SDL2_LIBRARY} ${SDL2_image_LIBRARY} ${SDL2_ttf_LIBRARY} ${SDL2_mixer_LIBRARY})

@@ -1,4 +1,4 @@
-#include "../headers/Sprite.hpp"
+#include "Sprite.hpp"
 
 
 Sprite::Sprite(int x, int y, int width, int height, bool flip, char* image_path, SDL_Renderer* renderer) {

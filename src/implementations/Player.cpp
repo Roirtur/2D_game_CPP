@@ -1,4 +1,4 @@
-#include "../headers/Player.hpp"
+#include "Player.hpp"
 
 
 Player::Player(int x, int y, int width, int height, double speed, Direction direction, char* image_path, SDL_Renderer* renderer) 
